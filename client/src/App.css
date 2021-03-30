@@ -1,10 +1,46 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
-
+Header h2{
+  color: rgb(254 254 255) ;
+}
 .App p {
-  width: 75%;
+  width: 95%;
   margin: auto;
   overflow-wrap: break-word;
   padding: 20px 0;
+  text-align: justify;
+}
+.searchInput{
+  width: "100%"
+}
+.site-layout-content {
+  min-height: 550px;
+  padding: 10px;
+  background: #fff;
+}
+.logo {
+  float: left;
+}
+.titleJt{
+  padding-left: 71px;
+}
+.logo img{
+  width: 55px;
+}
+.ant-row-rtl .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
+}
+
+.contentAnt{ 
+  padding: '50px 50px' 
+}
+
+.ant-pagination-options{
+  display: none !important;
+}
+
+.pagination{
+  padding-top: 15px;
 }
