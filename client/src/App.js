@@ -8,15 +8,17 @@ const { Header, Content, Footer } = Layout;
 // const DATA_SIZE_HALF = "half"
 const DATA_SIZE_FULL = "full"
 const INTERVAL_TIME = 2000
+/** The total rows that will show on every pages*/
 const DATA_DEFAULT_PAGES = 2
 const { Search } = Input;
 /** Application entry point */
 function App() {
-
   const [data, setData] = useState([])
   const [value, setValue] = useState(0)
   const [searchInput, setSearchInput] = useState("")
+  /** currentPage is the current page of the paginations component */
   const [currentPage, setCurrentPage] = useState(1)
+  /** toltalPages represent the complete rows from backend*/
   const [toltalPages, setToltalPages] = useState()
 
   /** DO NOT CHANGE THE FUNCTION BELOW */
@@ -32,6 +34,7 @@ function App() {
     const fetchData = async () => {
       let response = await fetch("/api/dataIdList?datasize=" + DATA_SIZE_FULL)
       let list = await response.json()
+
       setToltalPages(list.length)
       let dataItems = await Promise.all(list.map(async id => {
         return (await fetch("/api/dataItem/" + id)).json()
@@ -40,7 +43,7 @@ function App() {
     }
     fetchData()
   }, [])
-
+  /** copyRow provide functionality to when the user type Enter after edit a word and it make a copy to push at the final of the array*/
   const copyRow = row => {
     // console.log(data[row.split("-")[1]])
     const to = currentPage * DATA_DEFAULT_PAGES;
@@ -56,6 +59,7 @@ function App() {
 
   }
 
+  /** showParagraphs create paragraphs page by page depends of the DATA_DEFAULT_PAGES  */
   const showParagraphs = () => {
     const to = currentPage * DATA_DEFAULT_PAGES;
     const from = to - DATA_DEFAULT_PAGES;
@@ -76,6 +80,7 @@ function App() {
       </p>)
     })
   }
+  /** I added validations when the value on the input search is empty   */  
   const handleChange = e => {
     if (e.target) {
       setSearchInput(e.target.value)

@@ -13,23 +13,15 @@ function TextItem(props) {
     }
     return ""
   }
+  /** I added key press function to validate enter press button  */  
+
   const handleKeyPress = e => {
-    // console.log(e.key)
-    // let newData = "";
     if (e.key === "Enter") {
       props.copyRow(props.numRow)
       e.preventDefault();
     } 
-    // else {
-    //   newData = e.currentTarget.innerHTML;
-    //   setDataText(newData)
-    // }
 
   }
-
-  // const changeValue = e => {
-  //   console.log(e.target.value)
-  // }
 
   return (
     <span className={getHighlight()} contentEditable={true} suppressContentEditableWarning={true} onKeyPress={handleKeyPress}>
